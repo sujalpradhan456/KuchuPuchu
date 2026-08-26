@@ -245,6 +245,94 @@ h1 {
         font-size: 32px;
     }
 }
+    /* FINAL SURPRISE */
+
+.final-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.final-box {
+    padding: 40px 20px;
+}
+
+.final-small {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.surprise-btn {
+    padding: 16px 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: #ff4f81;
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 79, 129, 0.4);
+    transition: 0.3s;
+}
+
+.surprise-btn:hover {
+    transform: scale(1.08);
+}
+
+.love-message {
+    display: none;
+    margin-top: 40px;
+    animation: loveAppear 1.5s ease forwards;
+}
+
+.love-message .heart {
+    font-size: 80px;
+    animation: heartbeat 1.2s infinite;
+}
+
+.love-message h1 {
+    font-size: 70px;
+    margin: 10px 0;
+    letter-spacing: 5px;
+    font-weight: 900;
+}
+
+.love-message h2 {
+    font-size: 55px;
+    margin: 10px 0;
+}
+
+.love-message p {
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+@keyframes loveAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
 </style>
 </head>
 
