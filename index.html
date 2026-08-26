@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Kuchu Puchu ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FIRST SCREEN -->
+    <div class="screen active" id="screen1">
+
+        <h1>Hello, cute little KuchuPuchu 😘</h1>
+
+        <p>
+            Today I decided to make<br>
+            something special for you 😁
+        </p>
+
+        <button onclick="nextScreen(2)">
+            Tell me what it is ❤️
+        </button>
+
+    </div>
+
+
+    <!-- SECOND SCREEN -->
+    <div class="screen" id="screen2">
+
+        <h1>Before that... 👀</h1>
+
+        <p>
+            There's something I wanna tell you...
+        </p>
+
+        <p>
+            Do you wanna know what it is?
+        </p>
+
+        <button onclick="yesAnswer()">
+            YES ❤️
+        </button>
+
+        <button onclick="noAnswer()">
+            NO 😑
+        </button>
+
+        <p id="noMessage"></p>
+
+    </div>
+
+
+    <!-- THIRD SCREEN -->
+    <div class="screen" id="screen3">
+
+        <h1>❤️</h1>
+
+        <p>
+            No matter how many times we fight,
+            <br>
+            my love ❤️ for you
+            <br>
+            will always be the same.
+        </p>
+
+        <p>
+            And the output of this program
+            <br>
+            will be my love for you.
+        </p>
+
+        <button onclick="nextScreen(4)">
+            CONTINUE ❤️
+        </button>
+
+    </div>
+
+
+    <!-- FOURTH SCREEN -->
+    <div class="screen" id="screen4">
+
+        <h1>Wait... there's more 👀</h1>
+
+        <p>
+            I have a question for you...
+        </p>
+
+        <h2>
+            Do you know how much I love you?
+        </h2>
+
+        <button onclick="calculateLove()">
+            A little
+        </button>
+
+        <button onclick="calculateLove()">
+            A lot
+        </button>
+
+        <button onclick="calculateLove()">
+            More than you can imagine ❤️
+        </button>
+
+    </div>
+
+
+    <!-- LOADING SCREEN -->
+    <div class="screen" id="screen5">
+
+        <h1>Calculating your answer... ❤️</h1>
+
+        <p id="loadingText">Loading...</p>
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+        <p id="percentage">0%</p>
+
+    </div>
+
+
+    <!-- CORRECT ANSWER SCREEN -->
+    <div class="screen" id="screen6">
+
+        <h1>You got it wrong... 😛</h1>
+
+        <p>
+            The correct answer was...
+        </p>
+
+        <button onclick="nextScreen(7)">
+            Wanna know? 👀
+        </button>
+
+    </div>
+
+
+    <!-- INFINITE LOVE -->
+    <div class="screen" id="screen7">
+
+        <h1>The correct answer was...</h1>
+
+        <h2 class="infinite">
+            4. INFINITE ♾️
+        </h2>
+
+        <button onclick="nextScreen(8)">
+            Continue ❤️
+        </button>
+
+    </div>
+
+
+    <!-- PASSWORD SCREEN -->
+    <div class="screen" id="screen8">
+
+        <h1>Final Surprise 🎁</h1>
+
+        <p>
+            Enter the password.
+        </p>
+
+        <p>
+            Hint:
+            <br>
+            The date when we started
+            <br>
+            extreme naughtiness 😏
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+        >
+
+        <br>
+
+        <button onclick="checkPassword()">
+            Unlock ❤️
+        </button>
+
+        <p id="passwordMessage"></p>
+
+    </div>
+
+
+    <!-- FINAL SCREEN -->
+    <div class="screen" id="screen9">
+
+        <h1>One last thing... ❤️</h1>
+
+        <p class="finalMessage">
+
+            If I had to choose
+            <br>
+            one person again,
+            <br><br>
+
+            in this lifetime,
+            <br><br>
+
+            in every lifetime...
+            <br><br>
+
+            I would always choose YOU ❤️
+
+        </p>
+
+        <h2>
+            Thank you for being
+            <br>
+            my favourite part of life.
+        </h2>
+
+        <h1>
+            I LOVE YOU
+            <br>
+            MY SWEETHEART ❤️😘💕
+        </h1>
+
+        <div class="end">
+            =================
+            <br>
+            THE END...
+            <br>
+            <small>(but not our story ❤️)</small>
+            <br>
+            =================
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
