@@ -1,245 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For My Kuchu Puchu ❤️</title>
+<title>For My KuchuPuchu ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Georgia, serif;
+    background: #090011;
+    color: white;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 20%, #6d174f55, transparent 30%),
+        radial-gradient(circle at 80% 80%, #9b216855, transparent 30%),
+        linear-gradient(135deg, #090011, #24001d, #090011);
+}
+
+.heart {
+    position: fixed;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: .7;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ---------- SECTIONS ---------- */
+
+.section {
+    min-height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    text-align: center;
+}
+
+.section.active {
+    display: flex;
+}
+
+/* ---------- WELCOME ---------- */
+
+.welcome-box {
+    max-width: 650px;
+    animation: fadeIn 1.5s ease;
+}
+
+.small-text {
+    color: #ff9ccc;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(38px, 9vw, 75px);
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: #f3cadd;
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.glow-button {
+    border: 1px solid #ff76b5;
+    background: #ff3f91;
+    color: white;
+    padding: 15px 38px;
+    border-radius: 50px;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff3f9166;
+    transition: .3s;
+}
+
+.glow-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px #ff3f91aa;
+}
+
+/* ---------- QUIZ ---------- */
+
+.quiz-box {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff0d;
+    border: 1px solid #ffffff1c;
+    border-radius: 30px;
+    padding: 35px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 70px #00000066;
+}
+
+.progress {
+    color: #ff91c5;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.question {
+    font-size: clamp(25px, 6vw, 40px);
+    line-height: 1.3;
+    margin-bottom: 35px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option {
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    border: 1px solid #ff70ad66;
+    background: #ffffff0d;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.option:hover {
+    background: #ff3f9133;
+    transform: translateY(-3px);
+}
+
+.reaction {
+    min-height: 30px;
+    margin-top: 25px;
+    color: #ffacd1;
+    font-size: 17px;
+}
+
+.next {
+    margin-top: 20px;
+}
+
+/* ---------- MEMORIES ---------- */
+
+.memory-box {
+    width: 100%;
+    max-width: 700px;
+}
+
+.memory-box h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.memory-box p {
+    color: #f3cadd;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.photo-card {
+    display: none;
+    animation: fadeIn .8s ease;
+}
+
+.photo-card.active-photo {
+    display: block;
+}
+
+.photo-card img {
+    width: 100%;
+    max-height: 65vh;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 2px solid #ff8abd66;
+    box-shadow: 0 15px 60px #00000099;
+}
+
+.photo-caption {
+    margin: 20px 0;
+    font-size: 20px;
+    color: #ffd5e8;
+}
+
+/* ---------- ANIMATION ---------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:600px) {
+
+    .quiz-box {
+        padding: 25px 20px;
+    }
+
+    .subtitle {
+        font-size: 17px;
+    }
+
+    .memory-box h2 {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
+
 
 <body>
 
-    <!-- FIRST SCREEN -->
-    <div class="screen active" id="screen1">
-
-        <h1>Hello, cute little KuchuPuchu 😘</h1>
-
-        <p>
-            Today I decided to make<br>
-            something special for you 😁
-        </p>
-
-        <button onclick="nextScreen(2)">
-            Tell me what it is ❤️
-        </button>
-
-    </div>
+<div class="background"></div>
 
 
-    <!-- SECOND SCREEN -->
-    <div class="screen" id="screen2">
+<!-- =====================================================
+     SECTION 1 — WELCOME
+===================================================== -->
 
-        <h1>Before that... 👀</h1>
+<section id="welcome" class="section active">
 
-        <p>
-            There's something I wanna tell you...
-        </p>
+    <div class="welcome-box">
 
-        <p>
-            Do you wanna know what it is?
-        </p>
-
-        <button onclick="yesAnswer()">
-            YES ❤️
-        </button>
-
-        <button onclick="noAnswer()">
-            NO 😑
-        </button>
-
-        <p id="noMessage"></p>
-
-    </div>
-
-
-    <!-- THIRD SCREEN -->
-    <div class="screen" id="screen3">
-
-        <h1>❤️</h1>
-
-        <p>
-            No matter how many times we fight,
-            <br>
-            my love ❤️ for you
-            <br>
-            will always be the same.
-        </p>
-
-        <p>
-            And the output of this program
-            <br>
-            will be my love for you.
-        </p>
-
-        <button onclick="nextScreen(4)">
-            CONTINUE ❤️
-        </button>
-
-    </div>
-
-
-    <!-- FOURTH SCREEN -->
-    <div class="screen" id="screen4">
-
-        <h1>Wait... there's more 👀</h1>
-
-        <p>
-            I have a question for you...
-        </p>
-
-        <h2>
-            Do you know how much I love you?
-        </h2>
-
-        <button onclick="calculateLove()">
-            A little
-        </button>
-
-        <button onclick="calculateLove()">
-            A lot
-        </button>
-
-        <button onclick="calculateLove()">
-            More than you can imagine ❤️
-        </button>
-
-    </div>
-
-
-    <!-- LOADING SCREEN -->
-    <div class="screen" id="screen5">
-
-        <h1>Calculating your answer... ❤️</h1>
-
-        <p id="loadingText">Loading...</p>
-
-        <div class="progress">
-            <div id="progressBar"></div>
+        <div class="small-text">
+            A little something for you
         </div>
 
-        <p id="percentage">0%</p>
+        <h1>Hey, KuchuPuchu ❤️</h1>
 
-    </div>
-
-
-    <!-- CORRECT ANSWER SCREEN -->
-    <div class="screen" id="screen6">
-
-        <h1>You got it wrong... 😛</h1>
-
-        <p>
-            The correct answer was...
+        <p class="subtitle">
+            I made this little world just for you...
+            <br>
+            So don't rush.
+            <br>
+            Take your time. 👀
         </p>
 
-        <button onclick="nextScreen(7)">
-            Wanna know? 👀
+        <button class="glow-button" onclick="startQuiz()">
+            Open it ❤️
         </button>
 
     </div>
 
-
-    <!-- INFINITE LOVE -->
-    <div class="screen" id="screen7">
-
-        <h1>The correct answer was...</h1>
-
-        <h2 class="infinite">
-            4. INFINITE ♾️
-        </h2>
-
-        <button onclick="nextScreen(8)">
-            Continue ❤️
-        </button>
-
-    </div>
+</section>
 
 
-    <!-- PASSWORD SCREEN -->
-    <div class="screen" id="screen8">
 
-        <h1>Final Surprise 🎁</h1>
+<!-- =====================================================
+     SECTION 2 — QUIZ
+===================================================== -->
 
-        <p>
-            Enter the password.
-        </p>
+<section id="quiz" class="section">
 
-        <p>
-            Hint:
-            <br>
-            The date when we started
-            <br>
-            extreme naughtiness 😏
-        </p>
+    <div class="quiz-box">
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-        >
-
-        <br>
-
-        <button onclick="checkPassword()">
-            Unlock ❤️
-        </button>
-
-        <p id="passwordMessage"></p>
-
-    </div>
-
-
-    <!-- FINAL SCREEN -->
-    <div class="screen" id="screen9">
-
-        <h1>One last thing... ❤️</h1>
-
-        <p class="finalMessage">
-
-            If I had to choose
-            <br>
-            one person again,
-            <br><br>
-
-            in this lifetime,
-            <br><br>
-
-            in every lifetime...
-            <br><br>
-
-            I would always choose YOU ❤️
-
-        </p>
-
-        <h2>
-            Thank you for being
-            <br>
-            my favourite part of life.
-        </h2>
-
-        <h1>
-            I LOVE YOU
-            <br>
-            MY SWEETHEART ❤️😘💕
-        </h1>
-
-        <div class="end">
-            =================
-            <br>
-            THE END...
-            <br>
-            <small>(but not our story ❤️)</small>
-            <br>
-            =================
+        <div class="progress" id="progress">
+            Question 1 of 5
         </div>
 
+        <div class="question" id="question">
+        </div>
+
+        <div class="options" id="options">
+        </div>
+
+        <div class="reaction" id="reaction">
+        </div>
+
+        <button
+            id="nextButton"
+            class="glow-button next"
+            style="display:none;"
+            onclick="nextQuestion()">
+            Next →
+        </button>
+
     </div>
 
+</section>
 
-    <script src="script.js"></script>
+
+
+<!-- =====================================================
+     SECTION 3 — MEMORY JOURNEY
+===================================================== -->
+<!-- =====================================================
+     SECTION 3 — VIDEO + 3 PHOTOS
+===================================================== -->
+
+<section id="memories" class="section">
+
+    <div class="memory-box">
+
+        <div class="small-text">
+            Our little memories
+        </div>
+
+        <h2>Something I wanted you to see ❤️</h2>
+
+        <p>
+            Take your time...
+        </p>
+
+
+        <!-- VIDEO -->
+
+        <div class="photo-card active-photo">
+
+            <video
+                controls
+                playsinline
+                style="
+                    width:100%;
+                    border-radius:25px;
+                    border:2px solid #ff8abd66;
+                    box-shadow:0 15px 60px #00000099;
+                ">
+
+                <source src="video.mp4" type="video/mp4">
+
+                Your browser does not support this video.
+
+            </video>
+
+            <div class="photo-caption">
+                Your video caption ❤️
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 1 -->
+
+        <div class="photo-card">
+
+            <img src="photo1.jpg">
+
+            <div class="photo-caption">
+                Your caption for photo 1 ❤️
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="photo-card">
+
+            <img src="photo2.jpg">
+
+            <div class="photo-caption">
+                Your caption for photo 2 ❤️
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div class="photo-card">
+
+            <img src="photo3.jpg">
+
+            <div class="photo-caption">
+                Your caption for photo 3 ❤️
+            </div>
+
+        </div>
+
+
+        <button
+            class="glow-button"
+            onclick="nextMemory()">
+
+            Next → ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 12000);
+}
+
+setInterval(createHeart, 700);
+
+
+
+/* =====================================================
+   QUIZ QUESTIONS
+===================================================== */
+
+/*
+   CHANGE ONLY THE TEXT INSIDE THESE QUESTIONS.
+
+   Keep the structure exactly the same.
+*/
+
+const questions = [
+
+    {
+        question: "Who turns on the fastest?",
+        options: [
+            "Me",
+            "You"
+        ]
+    },
+
+    {
+        question: "What do you prefer?",
+        options: [
+            "Simple kiss",
+            "Kiss with foreplay"
+        ]
+    },
+
+    {
+        question: "What do you enjoy the most?",
+        options: [
+            "Sucking boobs",
+            "Fingering pussy"
+        ]
+    },
+
+    {
+        question: "Do you wanna get fucked?",
+        options: [
+            "YES ❤️",
+            "NO 🙈"
+        ]
+    },
+
+    {
+        question: "Do you want me to use condom?",
+        options: [
+            "Yes",
+            "No, i want it raw"
+        ]
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+function startQuiz() {
+
+    document.getElementById("welcome")
+        .classList.remove("active");
+
+    document.getElementById("quiz")
+        .classList.add("active");
+
+    showQuestion();
+}
+
+
+
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("progress")
+        .textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    document.getElementById("question")
+        .textContent = q.question;
+
+    const options =
+        document.getElementById("options");
+
+    options.innerHTML = "";
+
+    document.getElementById("reaction")
+        .textContent = "";
+
+    document.getElementById("nextButton")
+        .style.display = "none";
+
+
+    q.options.forEach((option, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent = option;
+
+        button.onclick = function() {
+
+            /*
+              You can customize these reactions later.
+            */
+
+            if (index === 0) {
+
+                document.getElementById("reaction")
+                    .textContent =
+                    "Hmm... interesting choice 👀❤️";
+
+            } else {
+
+                document.getElementById("reaction")
+                    .textContent =
+                    "Ohhh... noted 😏";
+
+            }
+
+            document.getElementById("nextButton")
+                .style.display = "inline-block";
+
+        };
+
+        options.appendChild(button);
+
+    });
+
+}
+
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        document.getElementById("quiz")
+            .classList.remove("active");
+
+        document.getElementById("memories")
+            .classList.add("active");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   MEMORY SLIDES
+===================================================== */
+
+let currentMemory = 0;
+
+function nextMemory() {
+
+    const photos =
+        document.querySelectorAll(".photo-card");
+
+    photos[currentMemory]
+        .classList.remove("active-photo");
+
+    currentMemory++;
+
+    if (currentMemory >= photos.length) {
+
+        currentMemory = 0;
+
+    }
+
+    photos[currentMemory]
+        .classList.add("active-photo");
+
+}
+
+</script>
+</body>
+</html>
 
 </body>
-
 </html>
