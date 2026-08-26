@@ -702,11 +702,10 @@ function showQuestion() {
 
 }
 
-
-
 /* =====================================================
    NEXT QUESTION
 ===================================================== */
+
 function nextQuestion() {
 
     currentQuestion++;
@@ -728,7 +727,6 @@ function nextQuestion() {
 }
 
 
-
 /* =====================================================
    MEMORY SLIDES
 ===================================================== */
@@ -739,24 +737,30 @@ function nextMemory() {
 
     const photos = document.querySelectorAll(".photo-card");
 
-    photos[currentMemory].classList.remove("active-photo");
+    photos[currentMemory]
+        .classList.remove("active-photo");
 
     currentMemory++;
 
     if (currentMemory < photos.length) {
 
-        photos[currentMemory].classList.add("active-photo");
+        photos[currentMemory]
+            .classList.add("active-photo");
 
     } else {
 
-        document.getElementById("memories").classList.remove("active");
+        document.getElementById("memories")
+            .classList.remove("active");
 
-        document.getElementById("quiz").classList.add("active");
+        document.getElementById("quiz")
+            .classList.add("active");
 
         showQuestion();
 
     }
-    }
+
+}
+
 
 /* =====================================================
    FINAL SURPRISE
@@ -764,12 +768,16 @@ function nextMemory() {
 
 function showLove() {
 
-    document.querySelector(".surprise-btn").style.display = "none";
+    document.querySelector(".surprise-btn")
+        .style.display = "none";
 
-    document.querySelector(".final-small").innerHTML =
+    document.querySelector(".final-small")
+        .innerHTML =
         "This is what I really wanted to tell you...";
 
-    document.getElementById("love-message").style.display = "block";
+    document.getElementById("love-message")
+        .style.display = "block";
+
 
 }
 
