@@ -276,7 +276,7 @@ h1 {
             Take your time. 👀
         </p>
 
-        <button class="glow-button" onclick="startQuiz()">
+        <button class="glow-button" onclick="startMemories()">
             Open it ❤️
         </button>
 
@@ -327,7 +327,6 @@ h1 {
 <!-- =====================================================
      SECTION 3 — VIDEO + 3 PHOTOS
 ===================================================== -->
-
 <section id="memories" class="section">
 
     <div class="memory-box">
@@ -342,10 +341,45 @@ h1 {
             Take your time...
         </p>
 
+        <!-- PHOTO 1 -->
+
+        <div class="photo-card active-photo">
+
+            <img src="photo1.jpg">
+
+            <div class="photo-caption">
+                Your caption for photo 1 ❤️
+            </div>
+
+        </div>
+
+        <!-- PHOTO 2 -->
+
+        <div class="photo-card">
+
+            <img src="photo2.jpg">
+
+            <div class="photo-caption">
+                Your caption for photo 2 ❤️
+            </div>
+
+        </div>
+
+        <!-- PHOTO 3 -->
+
+        <div class="photo-card">
+
+            <img src="photo3.jpg">
+
+            <div class="photo-caption">
+                Your caption for photo 3 ❤️
+            </div>
+
+        </div>
 
         <!-- VIDEO -->
 
-        <div class="photo-card active-photo">
+        <div class="photo-card">
 
             <video
                 controls
@@ -369,46 +403,6 @@ h1 {
 
         </div>
 
-
-        <!-- PHOTO 1 -->
-
-        <div class="photo-card">
-
-            <img src="photo1.jpg">
-
-            <div class="photo-caption">
-                Your caption for photo 1 ❤️
-            </div>
-
-        </div>
-
-
-        <!-- PHOTO 2 -->
-
-        <div class="photo-card">
-
-            <img src="photo2.jpg">
-
-            <div class="photo-caption">
-                Your caption for photo 2 ❤️
-            </div>
-
-        </div>
-
-
-        <!-- PHOTO 3 -->
-
-        <div class="photo-card">
-
-            <img src="photo3.jpg">
-
-            <div class="photo-caption">
-                Your caption for photo 3 ❤️
-            </div>
-
-        </div>
-
-
         <button
             class="glow-button"
             onclick="nextMemory()">
@@ -420,6 +414,7 @@ h1 {
     </div>
 
 </section>
+
 
 
 
@@ -519,15 +514,14 @@ let currentQuestion = 0;
    START QUIZ
 ===================================================== */
 
-function startQuiz() {
+function startMemories() {
 
     document.getElementById("welcome")
         .classList.remove("active");
 
-    document.getElementById("quiz")
+    document.getElementById("memories")
         .classList.add("active");
 
-    showQuestion();
 }
 
 
@@ -635,25 +629,26 @@ let currentMemory = 0;
 
 function nextMemory() {
 
-    const photos =
-        document.querySelectorAll(".photo-card");
+    const photos = document.querySelectorAll(".photo-card");
 
-    photos[currentMemory]
-        .classList.remove("active-photo");
+    photos[currentMemory].classList.remove("active-photo");
 
     currentMemory++;
 
-    if (currentMemory >= photos.length) {
+    if (currentMemory < photos.length) {
 
-        currentMemory = 0;
+        photos[currentMemory].classList.add("active-photo");
+
+    } else {
+
+        document.getElementById("memories").classList.remove("active");
+
+        document.getElementById("quiz").classList.add("active");
+
+        showQuestion();
 
     }
-
-    photos[currentMemory]
-        .classList.add("active-photo");
-
 }
-
 </script>
 </body>
 </html>
